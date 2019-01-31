@@ -24,8 +24,8 @@ const getListToTree = <T>(
 
     for (const item of list) {
         if (item[parentKeyId] === parentId) {
-            const rest = getListToTree<T>(list, keyId, parentKeyId, item[keyId], maxLevel, ++level);
-            if (level > maxLevel) {
+            const rest = getListToTree<T>(list, keyId, parentKeyId, item[keyId], maxLevel, level + 1);
+            if ((level + 1) > maxLevel) {
                 rest.push({
                     ...item,
                     level: level
