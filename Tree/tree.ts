@@ -12,7 +12,14 @@ interface ITree<T> {
  * @param {number} maxLevel - Number of max levels. Levels greater than maxLevel is not nester further.
  * @param {number} level - The starting level. Default 0.
  */
-const getListToTree = <T>(list: T[], keyId: string, parentKeyId: string, parentId: string | number, maxLevel: number, level: number = 0): ITree<T>[] => {
+const getListToTree = <T>(
+    list: T[], 
+    keyId: string, 
+    parentKeyId: string, 
+    parentId: string | number, 
+    maxLevel: number, 
+    level: number = 0
+): ITree<T>[] => {
     let result: ITree<T>[] = [];
 
     for (const item of list) {
