@@ -15,7 +15,7 @@ const flatten = (arr: any[]) => [].concat(...arr);
  * Takes a list with nested lists and flattens the list at any level.
  * @param {any[]} list - Input list.
  */
-const flatten2 = (arr: any[]) => arr.reduce((prevVal, curVal) => prevVal.concat(Array.isArray(curVal) ? flatten2(curVal) : curVal));
+const flattenDeep = (arr: any[]) => arr.reduce((prevVal, curVal) => prevVal.concat(Array.isArray(curVal) ? flatten2(curVal) : curVal));
 
 /**
  * Merge multiple lists
@@ -41,7 +41,7 @@ const range = (start: number, end: number, step = 1) => Array.from({length: Math
 const color = () => `#${Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, '0')}`;
 
 /**
- * Get max value in a list and count of max values.
+ * Get max value in a list and number of times that item appears.
  * @param {number[]} list - Input list.
  */
 const getMaxValueAndCount = (arr: number[]): { max: number: count: number } => arr.reduce((acc, val) =>
