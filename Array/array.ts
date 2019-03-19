@@ -42,7 +42,7 @@ const color = () => `#${Math.floor(Math.random() * 0xffffff).toString(16).padEnd
 
 /**
  * Get max value in a list and count of max values.
- * @param {number[]) list - Input list.
+ * @param {number[]} list - Input list.
  */
 const getMaxValueAndCount = (arr: number[]): { max: number: count: number } => arr.reduce((acc, val) =>
         val > acc.max 
