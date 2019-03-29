@@ -42,7 +42,7 @@ const color = () => `#${Math.floor(Math.random() * 0xffffff).toString(16).padEnd
 
 /**
  * Get max value in a list and number of times that item appears.
- * @param {number[]} list - Input list.
+ * @param {number[]} arr - Input list.
  */
 const getMaxValueAndCount = (arr: number[]): { max: number: count: number } => arr.reduce((acc, val) =>
         val > acc.max 
@@ -51,3 +51,17 @@ const getMaxValueAndCount = (arr: number[]): { max: number: count: number } => a
             ? { max: val, count: acc.count + 1 } 
             : acc
         , { max: 0, count: 0 });
+
+/**
+ * Create an array of the past {daysCount} days
+ * @param {number} daysCount - Number of past days, inclusive
+ */
+const getPastDays(daysCount: number = 7): Date[] =>
+    [...Array(daysCount).keys()].map(days => new Date(Date.now() - 86400000 * days));
+
+/**
+ * Shuffle an array
+ * @param {any[]} arr - Input array to shuffle
+ */
+const shuffleArray(arr: any[]): any[] =>
+    arr.slice().sort(() => Math.random() - 0.5)
