@@ -56,12 +56,12 @@ const getMaxValueAndCount = (arr: number[]): { max: number: count: number } => a
  * Create an array of the past {daysCount} days
  * @param {number} daysCount - Number of past days, inclusive
  */
-const getPastDays(daysCount: number = 7): Date[] =>
+const getPastDays = (daysCount: number = 7): Date[] =>
     [...Array(daysCount).keys()].map(days => new Date(Date.now() - 86400000 * days));
 
 /**
  * Shuffle an array
  * @param {any[]} arr - Input array to shuffle
  */
-const shuffleArray(arr: any[]): any[] =>
-    arr.slice().sort(() => Math.random() - 0.5)
+const shuffleArray = <T>(arr: T[]): T[] =>
+    arr.slice().sort(() => Math.random() - 0.5);
