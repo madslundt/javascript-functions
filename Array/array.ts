@@ -2,8 +2,8 @@
  * Takes a list of items and returns a list of unique items.
  * @param {any[]} list - Input list.
  */
-const removeDuplicates = (arr: any[]): any[] => arr.filter((item, index) => index === arr.indexOf(item));
-const removeDuplicates2 = (arr: any[]): any[] => [...new Set(arr)];
+const removeDuplicates = <T>(arr: T[]): T[] => arr.filter((item, index) => index === arr.indexOf(item));
+const removeDuplicates2 = <T>(arr: T[]): T[] => [...new Set(arr)];
 
 /**
  * Takes a list with nested lists and flattens the list at one level.
@@ -15,12 +15,7 @@ const flatten = (arr: any[]) => [].concat(...arr);
  * Takes a list with nested lists and flattens the list at any level.
  * @param {any[]} list - Input list.
  */
-const flattenDeep = (arr: any[]) => arr.reduce((prevVal, curVal) => prevVal.concat(Array.isArray(curVal) ? flatten2(curVal) : curVal));
-
-/**
- * Merge multiple lists
- */
-const merge = (arr: any[]): any => [].concat(...arr);
+const flattenDeep = (arr: any[]) => arr.reduce((prevVal, curVal) => prevVal.concat(Array.isArray(curVal) ? flattenDeep(curVal) : curVal));
 
 /**
  * Pipe output of one function to another function.
@@ -44,7 +39,7 @@ const color = () => `#${Math.floor(Math.random() * 0xffffff).toString(16).padEnd
  * Get max value in a list and number of times that item appears.
  * @param {number[]} arr - Input list.
  */
-const getMaxValueAndCount = (arr: number[]): { max: number: count: number } => arr.reduce((acc, val) =>
+const getMaxValueAndCount = (arr: number[]): { max: number, count: number } => arr.reduce((acc, val) =>
         val > acc.max 
           ? { max: val, count: 1 } 
           : val === acc.max 
