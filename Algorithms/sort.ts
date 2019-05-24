@@ -35,7 +35,7 @@ const mergeSort = <T>(arr: T[]): T[] => {
     const leftSide = arr.slice(0, middleIndex);
     const rightSide = arr.slice(middleIndex);
 
-    return merge(mergeSort(leftSide) || [], mergeSort(rightSide) || []);
+    return merge(mergeSort(leftSide), mergeSort(rightSide));
 }
 
 
