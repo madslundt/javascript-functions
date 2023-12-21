@@ -1,0 +1,20 @@
+/**
+ * Takes an object or array of objects and returns the same type with the specified property removed.
+ * @param {T} source
+ * @param {string} key
+ * @returns {T}
+ */
+const removeProperties = <T extends object | object[]>(source: T, key: string): T => {
+    if (Array.isArray(source)) {
+        return source.map(item => removeProperties(item, key)) as T;
+    } else if (source && typeof source === 'object') {
+        return Object.entries(source).reduce((acc, [sourceKey, value]) => {
+            if (key !== sourceKey) {
+                acc[sourceKey] = removeProperties(value, key);
+            }
+            return acc;
+        }, {}) as T;
+    }
+
+    return source;
+}
